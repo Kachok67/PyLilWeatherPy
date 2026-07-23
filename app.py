@@ -6,7 +6,6 @@ try:
     import threading
     import time
     import tkinter
-    from tkinter import font
 except ImportError:
     Error = "There was an error importing the libraries"
 
@@ -40,7 +39,9 @@ except URLError:
     Error = "Data couldnt be fetched. Check your internet connection"
 
 try:
-    data = json.loads(response)
+    if not response == None:
+        data = json.loads(response)
+    else: Error = "There was no response from the url"
 except json.JSONDecodeError:
     Error = "There was an error decoding the json"
 
