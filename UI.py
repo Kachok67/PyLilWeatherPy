@@ -3,7 +3,7 @@ import tkinter
 class UI:
     def __init__(self):
         self.root = tkinter.Tk()
-        self.root.geometry("300x300")
+        self.root.geometry("400x300")
         self.root.title("MyWeatherPy")
         self.root.configure(bg="#181818")
         self.root.attributes("-alpha", 0.9)
@@ -11,7 +11,7 @@ class UI:
     def update(self):
         self.root.mainloop()
 
-    def CreateUI(self, latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind):
+    def CreateUI(self, latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind, PfontSize=12, HfontSize=16, P2fontSize=10):
 
         h1 = tkinter.Label(self.root, text="Current Weather in Vienna", font=("Depixel", 14), bg="#181818")
         h2 = tkinter.Label(self.root, text=f"({latitude},{longtitude})", font=("Depixel", 8), bg="#181818")
@@ -21,23 +21,23 @@ class UI:
         else:
             h1.config(text="Current Weather")
 
-        h1.pack()
+        h1.pack(pady=10, padx=10)
         h2.pack()
 
-        currenttimeLabel = tkinter.Label(self.root, text=currenttimeText + "\n", font=("Depixel", 10), bg="#181818")
+        currenttimeLabel = tkinter.Label(self.root, text=currenttimeText + "\n", font=("Depixel", PfontSize), bg="#181818")
         currenttimeLabel.pack()
 
-        tempLabel = tkinter.Label(self.root, text=tempText, font=("Depixel", 10), bg="#181818")
+        tempLabel = tkinter.Label(self.root, text=tempText, font=("Depixel", PfontSize), bg="#181818")
         tempLabel.pack()
 
-        maxtempLabel = tkinter.Label(self.root, text=highestTempText, font=("Depixel", 10), bg="#181818")
+        maxtempLabel = tkinter.Label(self.root, text=highestTempText, font=("Depixel", P2fontSize), bg="#181818")
         maxtempLabel.pack()
 
-        lowestTempLabel = tkinter.Label(self.root, text=lowestTempText + "\n", font=("Depixel", 10), bg="#181818")
+        lowestTempLabel = tkinter.Label(self.root, text=lowestTempText + "\n", font=("Depixel", P2fontSize), bg="#181818")
         lowestTempLabel.pack()
 
-        windspeedLabel = tkinter.Label(self.root, text=windspeedText, font=("Depixel", 10), bg="#181818")
+        windspeedLabel = tkinter.Label(self.root, text=windspeedText, font=("Depixel", PfontSize), bg="#181818")
         windspeedLabel.pack()
 
-        maxwindspeedLabel = tkinter.Label(self.root, text=strongestWind, font=("Depixel", 10), bg="#181818")
+        maxwindspeedLabel = tkinter.Label(self.root, text=strongestWind, font=("Depixel", P2fontSize), bg="#181818")
         maxwindspeedLabel.pack()

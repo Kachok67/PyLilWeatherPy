@@ -12,6 +12,12 @@ except ImportError:
 Error = ""
 
 
+# Font sizes>
+PfontSize = 12;
+HfontSize = 16;
+P2fontSize = 10;
+
+
 usroption = input("Would you like to set custom latitude and longtitude? (y/n for Vienna) ")
 if usroption == "y":
     latitude = input("Please enter a latitude: ")
@@ -22,6 +28,7 @@ else:
 
 def CheckErrors():
     while True:
+        global Error  
         if not Error == "":
             print(Error)
             os._exit(1)
@@ -77,13 +84,12 @@ try:
     #     print("It is raining")
     # else:
     #     print("No rain")
-
-    
+ 
 except KeyError:
     Error = "Some expected fields are missing in the json"
 
 
 
 ui = UI.UI()
-ui.CreateUI(latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind)
+ui.CreateUI(latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind ,PfontSize, HfontSize, P2fontSize)
 ui.update()
