@@ -1,6 +1,13 @@
-import tkinter
+try:
+    import tkinter
+    import sys
+# Checks for importing issues
+except ImportError:
+    print("Could not initialise tkinter!")
+    sys.exit(1)
 
 class UI:
+    # Creates and configures the window, setting attributes like transparency, size, name and background color
     def __init__(self):
         self.root = tkinter.Tk()
         self.root.geometry("400x300")
@@ -8,14 +15,17 @@ class UI:
         self.root.configure(bg="#181818")
         self.root.attributes("-alpha", 0.9)
 
+    # Runs the Main Loop of the UI update
     def update(self):
         self.root.mainloop()
 
+    # Creates all graphical interface elements
     def CreateUI(self, latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind, PfontSize=12, HfontSize=16, P2fontSize=10):
 
         h1 = tkinter.Label(self.root, text="Current Weather in Vienna", font=("Depixel", 14), bg="#181818")
         h2 = tkinter.Label(self.root, text=f"({latitude},{longtitude})", font=("Depixel", 8), bg="#181818")
 
+        # For now, only recognises Vienna (default)
         if latitude == 48.20849 and longtitude == 16.37208:
             h1.config(text="Current Weather in Vienna")
         else:
