@@ -108,7 +108,7 @@ if sys.argv[0] != "no-ui":
     if (sys.argv[1] == ""):
         ui.CreateUI(latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind ,PfontSize, HfontSize, P2fontSize)
     else:
-        fontsizemultiplier = sys.argv[1]
+        fontsizemultiplier = int(sys.argv[1])
 
         ui.CreateUI(latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind ,PfontSize*fontsizemultiplier, HfontSize*fontsizemultiplier, P2fontSize*fontsizemultiplier)
 
