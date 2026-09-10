@@ -5,6 +5,7 @@ try:
     import os
     import threading
     import time
+    import sys # For arguments checking.
     import UI
 except ImportError:
     Error = "There was an error importing the libraries"
@@ -99,7 +100,17 @@ except KeyError:
     Error = "Some expected fields are missing in the json"
 
 
-# Creates UI and Object
-ui = UI.UI()
-ui.CreateUI(latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind ,PfontSize, HfontSize, P2fontSize)
-ui.update()
+# Creates UI and Object if argument of index 0 wasnt no-ui
+if sys.argv[0] != "no-ui":
+    ui = UI.UI()
+
+    # If the font size Argument is given, then multiply the standart font size by it
+    if (sys.argv[1] == ""):
+        ui.CreateUI(latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind ,PfontSize, HfontSize, P2fontSize)
+    else:
+        fontsizemultiplier = sys.argv[1]
+
+        ui.CreateUI(latitude, longtitude, currenttimeText, tempText, highestTempText, lowestTempText, windspeedText, strongestWind ,PfontSize*fontsizemultiplier, HfontSize*fontsizemultiplier, P2fontSize*fontsizemultiplier)
+
+
+    ui.update()
